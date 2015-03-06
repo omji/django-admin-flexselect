@@ -25,7 +25,7 @@ flexselect.bind_events = function() {
  * Binds the change event of a base field to the flexselect.ajax() function.
  */
 flexselect.bind_base_field = function(base_field, hashed_name) {
-	flexselect.get_element(base_field).live('change', {
+	flexselect.get_element(base_field).on('change', {
 		'base_field': base_field,
 		'hashed_name': hashed_name,
 		'success': function(data) {
@@ -40,7 +40,7 @@ flexselect.bind_base_field = function(base_field, hashed_name) {
  */
 flexselect.bind_trigger_field = function(trigger_field, hashed_name, 
 base_field) {
-	flexselect.get_element(trigger_field).live('change', {
+	flexselect.get_element(trigger_field).on('change', {
 		'base_field': base_field,
 		'hashed_name': hashed_name,
 		'success': function(data) {
@@ -66,7 +66,7 @@ flexselect.ajax = function(event) {
 		url: '/flexselect/field_changed',
 		data: $('form').serialize() + '&hashed_name=' + event.data.hashed_name
 			  + event.data.data,
-		type: 'post',
+		type: 'POST',
 		context: flexselect.get_element(event.data.base_field),
 		success: event.data.success,
 	    error: function(data) {
